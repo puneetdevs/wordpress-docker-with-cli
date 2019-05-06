@@ -2,12 +2,12 @@ version: '3'
 
 services:
   wp:
-    image: wordpress:latest # https://hub.docker.com/_/wordpress/
+    image: conetix/wordpress-with-wp-cli # https://hub.docker.com/_/wordpress/
     ports:
       - ${IP}:80:80 # change ip if required
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
-      - ./wp-app:/var/www/html:rw # Full wordpress project
+      - ./wp-app:/var/www/html # Full wordpress project
       #- ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
       #- ./theme-name/trunk/:/var/www/html/wp-content/themes/theme-name # Theme development
     environment:
@@ -19,15 +19,6 @@ services:
       - db
     links:
       - db
-
-  wpcli:
-    image: wordpress:cli
-    volumes:
-      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
-      - ./wp-app:/var/www/html:rw
-    depends_on:
-      - db
-      - wp
 
   pma:
     image: phpmyadmin/phpmyadmin
