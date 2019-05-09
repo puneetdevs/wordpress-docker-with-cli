@@ -48,9 +48,9 @@ docker-compose down -v
 docker-compose run --rm wpcli core install --url=http://localhost --title=title_here --admin_user=admin --admin_email=admin@domainname.com --admin_password=passwordhere
 ``````
 
-#### Install Wordpress Plugin
+#### Install Wordpress Plugin and Activate
 ```
-docker-compose run --rm wpcli plugin install wpcasa
+docker-compose run --rm wpcli plugin install wpcasa --activate
 ````
 
 ### COMMAND To Shut down and Delete data:
